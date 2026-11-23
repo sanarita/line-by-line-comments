@@ -1,0 +1,24 @@
+<!DOCTYPE html> <!-- HTML5の文書であることを宣言する -->
+<!-- 問合せフォームのページ。送信ボタンで入力内容を確認表示する -->
+<html lang="ja"> <!-- 日本語ページの開始 -->
+<head> <!-- ページの設定情報の開始 -->
+  <meta charset="utf-8"> <!-- 文字化けを防ぐため文字コードをUTF-8にする -->
+  <!-- ブラウザのタブに表示される題名（title の中にコメントを書くと文字として表示されるため直上に記載） -->
+  <title>問合せ</title>
+  <link href="https://example.com/style.css" rel="stylesheet"> <!-- 共通の見た目の定義を読み込む -->
+  <style> /* このページ専用の見た目の定義の開始 */
+    body { font-family: sans-serif; } /* ページ全体を読みやすいゴシック体にする */
+  </style> <!-- 見た目の定義の終わり -->
+</head> <!-- 設定情報の終わり -->
+<body> <!-- 画面に表示される部分の開始 -->
+  <input id="name" placeholder="お名前"> <!-- 名前の入力欄 -->
+  <button id="send">送信</button> <!-- 押すと確認表示するボタン -->
+  <script> // 動きの定義の開始
+    document.getElementById("send").onclick = () => { // 送信ボタンが押されたときの処理を登録する
+      const name = document.getElementById("name").value; // 入力された名前を取り出す
+      // 【理由】入力値をHTMLとして埋め込むとスクリプトを仕込まれるため、alertで文字として表示する
+      alert(name + "さん、受け付けました"); // 確認メッセージを表示する
+    }; // 押されたときの処理の終わり
+  </script> <!-- 動きの定義の終わり -->
+</body> <!-- 表示部分の終わり -->
+</html> <!-- ページの終わり -->

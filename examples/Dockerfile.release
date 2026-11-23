@@ -1,0 +1,10 @@
+# syntax=docker/dockerfile:1
+# 社内ナレッジ検索モック（knowledge_mock.py）を動かすためのコンテナ定義
+# 使い方: docker build -t knowledge . && docker run --rm knowledge search VPN
+FROM python:3.12-slim
+WORKDIR /app
+COPY knowledge_mock.py .
+# 【理由】起動のたびに空のDBにならないよう、イメージ作成時にサンプルデータ入りのDBを作っておく
+RUN python knowledge_mock.py init
+ENTRYPOINT ["python", "knowledge_mock.py"]
+CMD ["categories"]
